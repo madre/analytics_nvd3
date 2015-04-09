@@ -124,15 +124,15 @@ def include_chart_jscss(static_dir=''):
     chart.header_css = [
         '<link media="all" href="%s" type="text/css" rel="stylesheet" />\n' % h for h in
         (
-            "http://nvd3.org/assets/css/nv.d3.css",
+            "http://cdn.bootcss.com/nvd3/1.1.13-beta/nv.d3.min.css",
         )
     ]
 
     chart.header_js = [
         '<script src="%s" type="text/javascript"></script>\n' % h for h in
         (
-            "http://nvd3.org/assets/lib/d3.v3.js",
-            "http://nvd3.org/assets/js/nv.d3.js"
+            "http://cdn.bootcss.com/d3/3.3.8/d3.min.js",
+            "http://cdn.bootcss.com/nvd3/1.1.13-beta/nv.d3.min.js"
         )
     ]
     chart.buildhtmlheader()

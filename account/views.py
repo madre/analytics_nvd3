@@ -18,10 +18,10 @@ class LoginView(View, TemplateResponseMixin):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated():
             return redirect("home")
-        return self.render_to_response({"message": "欢迎进入数据统计系统"})
+        next_redirect = request.GET.get("next")
+        return self.render_to_response({"next": next_redirect, "message": "欢迎进入数据统计系统"})
 
     def post(self, request, *args, **kwargs):
-
         username = request.POST.get('username')
         password = request.POST.get('password')
         if not username or not password:
@@ -30,7 +30,9 @@ class LoginView(View, TemplateResponseMixin):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                # Redirect to a success page.
+                if request.POST.get("next"):
+                    return redirect(request.POST.get("next"))
+                print "no next"
                 return redirect("home")
             else:
                 # Return a 'disabled account' error message

@@ -12,5 +12,5 @@ from django.contrib.auth.decorators import login_required
 from user_analytics.views import UserBasicTemplate
 
 urlpatterns = patterns('',
-                       url(r'^$', login_required(UserBasicTemplate.as_view()), name='home'),
+                       url(r'^wifi/$', login_required(UserBasicTemplate.as_view()), name='home'),
                        )

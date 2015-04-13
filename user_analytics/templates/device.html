@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load nvd3_tags %}
+{% block extra_head %}
+    {% include_chart_jscss %}
+    {% load_chart charttype chartdata chartcontainer extra %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>{{ device_wifi_total }}</h3>
+              <p>设备激活总量</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-tablet"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>暂无统计</h3>
+              <p>设备独立激活总量</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-plus"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>{{ user_wifi_total }}</h3>
+              <p>用户激活总量</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-users"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>{{ user_wifi_origin_total }}</h3>
+              <p>独立激活总量</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-user-plus"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+    {% include_container chartcontainer 500 800 %}
+    </div>
+
+{% endblock %}

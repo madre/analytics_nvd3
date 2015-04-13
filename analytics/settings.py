@@ -167,6 +167,37 @@ LOGGING = {
 }
 
 
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': '192.168.199.8:6379',
+        'TIMEOUT': 3600,
+        'OPTIONS': {
+            'DB': 16,
+            'MAX_ENTRIES': 10000,
+        },
+    }
+}
+REDIS_HOST = '192.168.199.8'
+REDIS_PORT = 6379
+REDIS_DB = 16
+
+
+import ConfigParser
+from StringIO import StringIO
+
+SERVER_CONF = ConfigParser.RawConfigParser()
+try:
+    with open('server.conf', 'rb') as f:
+        content = f.read().decode('utf-8-sig').encode('utf8')
+        try:
+            SERVER_CONF.readfp(StringIO(content))
+        except ConfigParser.MissingSectionHeaderError:
+            content_str = "[default]\n" + content
+            SERVER_CONF.readfp(StringIO(content_str))
+except IOError:
+    pass
+
 # IMPORT LOCAL SETTINGS
 # =====================
 try:
